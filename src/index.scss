@@ -4,6 +4,12 @@
 @import './scss/reboot.scss';
 @import './scss/utils.scss';
 
+// mixins
+
+@import './components/mixins/button.scss';
+@import './components/mixins/title.scss';
+
 // components
 
-// @import './components/variables.scss';
+@import './components/page-container/page-container.scss';
+@import './components/no-discounts/no-discounts.scss';

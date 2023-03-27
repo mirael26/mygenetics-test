@@ -1,0 +1,18 @@
+.button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 20px;
+  color: $color-white-default;
+  background-color: $color-green;
+  border: 2px solid $color-green;
+  border-radius: 42px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover,
+  &:active {
+    color: $color-green;
+    background-color: $color-white-default;
+  }
+}
