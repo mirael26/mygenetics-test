@@ -1,0 +1,23 @@
+.checkbox {
+  width: fit-content;
+  display: flex;
+
+  &__label {
+    display: block;
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: 500;
+    color: $color-black-default;
+    border: 1px solid $color-green;
+    border-radius: 8px;
+    background-color: $color-white-default;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  &__input:checked + &__label {
+    background-color: $color-green;
+    color: $color-white-default;
+  }
+}

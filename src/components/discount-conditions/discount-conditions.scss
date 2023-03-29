@@ -1,0 +1,12 @@
+.discount-conditions {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  width: 100%;
+  margin: 0;
+  padding: 25px 15px;
+  background-color: rgba($color-green, 0.05);
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px 0 rgba($color-black-default, 0.14);
+}

@@ -1,0 +1,38 @@
+.discount-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 40px;
+  background-color: $color-white-default;
+  border-radius: 12px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 400px;
+  }
+
+  &__conditions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+  }
+
+  &__add-conditions-button {
+    width: fit-content;
+  }
+
+  &__label {
+    align-self: flex-start;
+  }
+
+  &__button-submit {
+    width: fit-content;
+    margin-top: 10px;
+  }
+}

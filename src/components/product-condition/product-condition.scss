@@ -1,0 +1,29 @@
+.product-condition {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  &__activate-button {
+    width: fit-content;
+    min-width: 150px;
+    color: $color-green;
+    background-color: $color-white-default;
+    border: 1px solid $color-green;
+    border-radius: 12px;
+
+    &:hover {
+      background-color: rgba($color-green, 0.05);
+    }
+
+    &.is-active {
+      color: $color-white-default;
+      background-color: $color-green;
+    }
+  }
+
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+}

@@ -1,0 +1,36 @@
+.product-select {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__select {
+    width: 100%;
+  }
+
+  &__option {
+    text-align: center;
+
+    &:checked {
+      background-color: rgba($color-green, 0.3);
+    }
+
+    &:checked {
+      background-color: rgba($color-green, 0.5);
+    }
+  }
+}
+
+.react-select {
+  &__control {
+    border-color: $color-green !important;
+    
+    &:hover {
+      border-color: $color-green !important;
+    }
+
+    &--is-focused {
+      border-color: $color-green !important;
+      box-shadow: 0 0 0 1px $color-green !important
+    }
+  }
+}

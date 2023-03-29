@@ -8,9 +8,22 @@
 
 @import './components/mixins/button.scss';
 @import './components/mixins/title.scss';
+@import './components/mixins/text-input/text-input.scss';
+@import './components/mixins/textarea/textarea.scss';
+@import './components/mixins/radio/radio.scss';
+@import './components/mixins/checkbox/checkbox.scss';
+@import './components/mixins/sum-input/sum-input.scss';
+@import './components/mixins/date-input/date-input.scss';
+@import './components/mixins/product-select/product-select.scss';
 
 // components
 
 @import './components/page-container/page-container.scss';
 @import './components/no-discounts/no-discounts.scss';
 @import './components/not-found/not-found.scss';
+@import './components/discount-form/discount-form.scss';
+@import './components/discount-amount/discount-amount.scss';
+@import './components/discount-conditions/discount-conditions.scss';
+@import './components/sum-condition/sum-condition.scss';
+@import './components/product-condition/product-condition.scss';
+@import './components/date-condition/date-condition.scss';

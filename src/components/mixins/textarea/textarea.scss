@@ -1,0 +1,33 @@
+.textarea {
+  width: 100%;
+
+  &__label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: $color-black-default;
+  }
+
+  &__textarea {
+    width: 100%;
+    max-width: 100%;
+    height: 100px;
+    padding: 10px 20px;
+    color: $color-black-default;
+    background-color: $color-white-default;
+    border: 1px solid $color-green;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, border 0.3s ease;
+
+    &:hover,
+    &:active,
+    &:focus-visible {
+      background-color: rgba($color-green, 0.05);
+      outline: none;
+    }
+
+    &:invalid {
+      border: 1px solid $color-red;
+    }
+  }
+}

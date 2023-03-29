@@ -1,0 +1,54 @@
+.text-input {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+
+  &__label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: $color-black-default;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 14px 55px 14px 20px;
+    color: $color-black-default;
+    background-color: $color-white-default;
+    border: 1px solid $color-green;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, border 0.3s ease;
+
+    &:hover,
+    &:active,
+    &:focus-visible {
+      background-color: rgba($color-green, 0.05);
+      outline: none;
+    }
+
+    &.is-invalid {
+      border: 1px solid $color-red;
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    &[type=number] {
+      -moz-appearance: textfield;
+    }
+
+    &[type=datetime-local] {
+      padding: 14px 20px;
+    }
+  }
+
+  &__sign {
+    position: absolute;
+    bottom: 14px;
+    right: 12px;
+    font-size: 18px;
+  }
+}
