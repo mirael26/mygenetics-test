@@ -32,8 +32,8 @@ const SumCondition = ({ group, changeFormData, deleteCondition }: ISumConditionP
 
       {isActive && (
         <div className="sum-condition__inputs">
-          <SumInput label="Больше" name="sum-greater" group={group} withInclusive changeFormData={changeFormData}/>
-          <SumInput label="Меньше" name="sum-less" group={group}  withInclusive changeFormData={changeFormData}/>
+          <SumInput label="Больше" name="sum-min" group={group} withInclusive changeFormData={changeFormData}/>
+          <SumInput label="Меньше" name="sum-max" group={group}  withInclusive changeFormData={changeFormData}/>
           <SumInput label="Равно" name="sum-equal" group={group} changeFormData={changeFormData} />
         </div>
       )}

@@ -1,4 +1,4 @@
-import { DiscountType } from "./consts";
+import { DiscountType, ErrorMessage } from "./consts";
 
 export const isEmptyCondition = (condition: {
   [key: string]: string;
@@ -38,8 +38,8 @@ export const validateForm = (formData: {
 
   const checkCondition = (condition: { [key: string]: string | object }) => {
     const sumEqual = condition["sum-equal"];
-    const sumGreater = condition["sum-greater"];
-    const sumLess = condition["sum-less"];
+    const sumMin = condition["sum-min"];
+    const sumMax = condition["sum-max"];
     const dateStart = Date.parse(condition["sum-start"] as string);
     const dateEnd = Date.parse(condition["sum-end"] as string);
     const productsRequired = condition["products-required"] as Array<{
@@ -51,12 +51,12 @@ export const validateForm = (formData: {
       label: string;
     }>;
 
-    if (sumEqual && (sumGreater || sumLess)) {
+    if (sumEqual && (sumMin || sumMax)) {
       errors.push(ErrorMessage.SumConflictWithEqual);
     }
 
-    if (sumGreater && sumLess && sumGreater <= sumLess) {
-      errors.push(ErrorMessage.SumGreaterLessConflict);
+    if (sumMin && sumMax && sumMin >= sumMax) {
+      errors.push(ErrorMessage.SumMinMaxConflict);
     }
 
     if (dateStart <= dateEnd) {
@@ -85,19 +85,6 @@ export const validateForm = (formData: {
   return uniqueErrors;
 };
 
-export const ErrorMessage = {
-  NoConditions: "Добавьте хотя бы одно условие",
-  DiscountGreater100Percents: "Скидка не должна превышать 99%",
-  DiscountZeroOrNegative: "Скидка не должна быть нулевой или отрицательной",
-
-  SumConflictWithEqual:
-    "Если требуется конкретная сумма, не допускаются условия > или <",
-  SumGreaterLessConflict: "Минимальная сумма больше или равна максимальной",
-  ProductConflict:
-    "Пересекаются продукты, которые должны быть и которых не должно быть в корзине",
-  DateStartEndConflict: "Дата начала акции больше чем дата конца акции",
-};
-
 export const clearEmptyFields = (formData: {
   [key: string]: string | object;
 }): { [key: string]: string | object } => {
@@ -122,11 +109,11 @@ export const clearEmptyFields = (formData: {
       );
       // убираем ненужные флаги "включительно"
       Object.keys(condition).forEach(() => {
-        if (!condition["sum-greater"] && condition["sum-greater-or-equal"]) {
-          delete condition["sum-greater-or-equal"];
+        if (!condition["sum-min"] && condition["sum-min-or-equal"]) {
+          delete condition["sum-min-or-equal"];
         }
-        if (!condition["sum-less"] && condition["sum-less-or-equal"]) {
-          delete condition["sum-less-or-equal"];
+        if (!condition["sum-max"] && condition["sum-max-or-equal"]) {
+          delete condition["sum-max-or-equal"];
         }
         if (!condition["date-start"] && condition["date-start-or-equal"]) {
           delete condition["date-start-or-equal"];
