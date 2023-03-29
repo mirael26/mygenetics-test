@@ -6,44 +6,8 @@ import FormPage from "./pages/form-page";
 import NotFoundPage from "./pages/not-found-page";
 import { IDiscountInfo } from "./types";
 
-
-const mock = {
-  "discount-type": "percent",
-  name: "Прекрасная скидка",
-  description:"Чудесная расчудесная скидка только сейчас только для вас налетай покупай",
-  "discount-amount":"10",
-  "conditions-1": {
-    "sum-min":"20",
-    "sum-max":"200",
-    "products-required": [
-      {
-      "value":"test2",
-      "label":"Тест 2"
-      },
-      {
-      "value":"test3",
-      "label":"Тест 3"
-      }
-    ],
-    "products-not-allowed":[
-    {
-    "value":"test1",
-    "label":"Тест 1"
-    }
-    ],
-    "sum-max-or-equal":"true"
-    },
-    "date-start":"2023-03-30T07:00",
-    "date-end":"2023-03-31T01:41",
-    "date-start-or-equal":"true",
-  "conditions-2": {
-    "sum-equal":"10000"
-  },
-  "id": "1680115746737"
-};
-
 const App = () => {
-  const [discountsList, setDiscountsList] = useState<Array<IDiscountInfo>>([mock]);
+  const [discountsList, setDiscountsList] = useState<Array<IDiscountInfo>>([]);
 
   const addDiscount = (discountData: IDiscountInfo) => {
     const newDiscountsList = [...discountsList];
