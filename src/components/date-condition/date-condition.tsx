@@ -32,8 +32,8 @@ const DateCondition = ({ group, changeFormData, deleteCondition }: IProductCondi
 
       {isActive && (
         <div className="date-condition__inputs">
-          <DateInput name="date-from" label="Начало" withInclusive changeFormData={changeFormData}/>
-          <DateInput name="date-to" label="Конец" withInclusive changeFormData={changeFormData}/>
+          <DateInput name="date-start" label="Начало" withInclusive changeFormData={changeFormData}/>
+          <DateInput name="date-end" label="Конец" withInclusive changeFormData={changeFormData}/>
         </div>
       )}
     </div>

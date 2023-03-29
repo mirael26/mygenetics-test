@@ -23,6 +23,11 @@ export const DiscountTypeRadio = [
   }
 ];
 
+export const DiscountTypeSign = {
+  percent: "%",
+  fixed: "руб.",
+};
+
 export const Products = {
   test1: 'Тест 1',
   test2: 'Тест 2',
@@ -32,3 +37,24 @@ export const Products = {
   test6: 'Тест 6',
 };
 
+export const ErrorMessage = {
+  NoConditions: 'Добавьте хотя бы одно условие',
+  DiscountGreater100Percents: 'Скидка не должна превышать 100%',
+  DiscountZeroOrNegative: 'Скидка не должна быть нулевой или отрицательной',
+  SumConflictWithEqual: 'Если требуется конкретная сумма, не допускаются условия > или <',
+  SumGreaterLessConflict: 'Минимальная сумма больше максимальной',
+  ProductConflict: 'Пересекаются продукты, которые должны быть и которых не должно быть в корзине',
+  DateStartEndConflict: 'Дата начала акции больше чем дата конца акции',
+};
+
+export const ConditionFields = {
+  sum: [
+    "sum-greater",
+    "sum-greater-or-equal",
+    "sum-less",
+    "sum-less-or-equal",
+    "equal",
+  ],
+  product: ["products-not-allowed", "products-required"],
+  date: ["date-from", "date-from-or-equal", "date-to", "date-to-or-equal"],
+};

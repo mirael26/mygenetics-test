@@ -1,31 +1,31 @@
-import { useState } from "react";
-import { DiscountType, DiscountTypeRadio } from "../../consts";
+import { useState, useEffect } from "react";
+import { DiscountType, DiscountTypeRadio, DiscountTypeSign } from "../../consts";
 import { IChangeFormDataParams, TDiscountType } from "../../types";
 import Radio from "../mixins/radio/radio";
 import TextInput from "../mixins/text-input/text-input";
 
-const DiscountTypeSign = {
-  percent: "%",
-  fixed: "руб.",
-};
-
 interface IDiscountAmountProps {
-  changeFormData?: (params: IChangeFormDataParams) => void;
+  changeFormData: (params: IChangeFormDataParams) => void;
 }
 
-const DiscountAmount = ({changeFormData}: IDiscountAmountProps) => {
+const DiscountAmount = ({ changeFormData }: IDiscountAmountProps) => {
   const [discountType, setDiscountType] = useState<TDiscountType>(
     DiscountType.Percent
   );
 
+  useEffect(() => {
+    changeFormData({
+      name: "discount-type",
+      value: discountType,
+    });
+  }, []);
+
   const handleRadioChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     setDiscountType(evt.target.value as TDiscountType);
-    if (changeFormData) {
-      changeFormData({
-        name: 'discount-type',
-        value: evt.target.value,
-      });
-    }
+    changeFormData({
+      name: "discount-type",
+      value: evt.target.value,
+    });
   };
 
   return (
