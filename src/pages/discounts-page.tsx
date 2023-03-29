@@ -5,15 +5,16 @@ import { IDiscountInfo } from "../types";
 
 interface IDiscountsPageProps {
   discountsList: Array<IDiscountInfo>;
+  deleteDiscount: (id: string) => void;
 }
 
-const DiscountsPage = ({ discountsList }: IDiscountsPageProps) => {
+const DiscountsPage = ({ discountsList, deleteDiscount }: IDiscountsPageProps) => {
   const isEmpty = !discountsList.length;
 
   return (
     <PageContainer>
       <h1 className="title">Список скидок</h1>
-      {isEmpty ? <NoDiscounts /> : <Discounts />}
+      {isEmpty ? <NoDiscounts /> : <Discounts discountsList={discountsList} deleteDiscount={deleteDiscount} />}
     </PageContainer>
   );
 };

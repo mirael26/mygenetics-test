@@ -6,8 +6,23 @@ export interface IDiscountInfo {
   'discount-amount': string,
   'discount-type': string,
   'id': string;
-  name: string,
-  [key: string]: string | object,
+  name: string;
+  description: string;
+  [key: string]: string | IConditionInfo;
+};
+
+export interface IConditionInfo {
+  'sum-min'?: string;
+  'sum-min-or-equal'?: string;
+  'sum-max'?: string;
+  'sum-max-or-equal'?: string;
+  'sum-equal'?: string;
+  'products-required'?: Array<{value: string, label: string}>;
+  'products-not-allowed'?: Array<{value: string, label: string}>;
+  'date-start'?: string;
+  'date-start-or-equal'?: string;
+  'date-end'?: string;
+  'date-end-or-equal'?: string;
 };
 
 export type TDiscountType = valueof<typeof DiscountType>;

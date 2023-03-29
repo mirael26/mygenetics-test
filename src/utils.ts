@@ -1,4 +1,5 @@
 import { DiscountType, ErrorMessage } from "./consts";
+import { IConditionInfo, IDiscountInfo } from './types';
 
 export const isEmptyCondition = (condition: {
   [key: string]: string;
@@ -126,4 +127,52 @@ export const clearEmptyFields = (formData: {
   });
 
   return data;
+};
+
+export const getConditionsStrings = (discountData: IDiscountInfo): Array<Array<string>> => {
+  const conditions: Array<IConditionInfo> = [];
+  Object.keys(discountData).forEach((key) => {
+    if (key.includes('condition')) {
+      conditions.push(discountData[key] as object);
+    }
+  });
+  const result = conditions.map((condition) => {
+    const conditionsStrings = [];
+    if (condition['sum-min'] && condition['sum-min-or-equal']) {
+      conditionsStrings.push(`сумма больше или равна ${condition['sum-min']} руб.`)
+    }
+    if (condition['sum-min'] && !condition['sum-min-or-equal']) {
+      conditionsStrings.push(`сумма больше ${condition['sum-min']} руб.`)
+    }
+    if (condition['sum-max'] && condition['sum-max-or-equal']) {
+      conditionsStrings.push(`сумма меньше или равна ${condition['sum-max']} руб.`)
+    }
+    if (condition['sum-max'] && !condition['sum-max-or-equal']) {
+      conditionsStrings.push(`сумма меньше ${condition['sum-max']} руб.`)
+    }
+    if (condition['sum-equal']) {
+      conditionsStrings.push(`сумма равна ${condition['sum-equal']} руб.`)
+    }
+    if (condition['products-required']) {
+      condition['products-required'].forEach(product => conditionsStrings.push(product.label));
+    }
+    if (condition['products-not-allowed']) {
+      condition['products-not-allowed'].forEach(product => conditionsStrings.push(`НЕ ${product.label}`));
+    }
+    if (condition['date-start'] && condition['date-start-or-equal']) {
+      conditionsStrings.push(`дата больше или равно ${new Date(condition['date-start']).toLocaleString()}`)
+    }
+    if (condition['date-start'] && !condition['date-start-or-equal']) {
+      conditionsStrings.push(`дата больше ${new Date(condition['date-start']).toLocaleString()}`)
+    }
+    if (condition['date-end'] && condition['date-end-or-equal']) {
+      conditionsStrings.push(`дата меньше или равно ${new Date(condition['date-end']).toLocaleString()}`)
+    }
+    if (condition['date-end'] && !condition['date-end-or-equal']) {
+      conditionsStrings.push(`дата меньше ${new Date(condition['date-end']).toLocaleString()}`)
+    }
+    return conditionsStrings;
+  });
+
+  return result;
 };

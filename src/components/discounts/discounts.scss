@@ -1,0 +1,11 @@
+.discounts {
+  width: 100%;
+
+  &__wrapper {
+    min-height: 600px;
+    padding: 40px 40px;
+    background-color: $color-white-default;
+    border-radius: 12px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+  }
+}

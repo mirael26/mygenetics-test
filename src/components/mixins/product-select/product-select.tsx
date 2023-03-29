@@ -22,13 +22,6 @@ const ProductSelect = ({ label, name, group, selectList, changeFormData }: IProd
   return (
     <div className="product-select">
       <div className="product-select__label">{label}</div>
-      {/* <select className="product-select__select" name={`${name}[]`} multiple size={3} onChange={handleSelectChange}>
-        {selectList.map((item) => (
-          <option key={`${name}-${item}-option`} className="product-select__option" value={item}>
-            {item}
-          </option>
-        ))}
-      </select> */}
       <Select
         onChange={handleSelectChange}
         isMulti

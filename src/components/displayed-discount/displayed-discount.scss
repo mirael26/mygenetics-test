@@ -1,0 +1,30 @@
+.displayed-discount {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+
+  &__label {
+    margin-bottom: 8px;
+    color: $color-green;
+  }
+
+  &__title {
+    font-size: 18px;
+  }
+
+  &__text {
+    font-size: 18px;
+  }
+
+  &__condition-string{
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+
+  &__condition-operator {
+    font-weight: 500;
+    color: $color-green;
+    margin-bottom: 5px;
+  }
+}
