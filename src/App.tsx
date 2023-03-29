@@ -9,6 +9,27 @@ import { IDiscountInfo } from "./types";
 const App = () => {
   const [discountsList, setDiscountsList] = useState<Array<IDiscountInfo>>([]);
 
+  const addDiscount = (discountData: IDiscountInfo) => {
+    const existingId = discountsList.findIndex((discount) => discount.id === discountData.id);
+    const newDiscountsList = [...discountsList];
+
+    if (existingId !== -1) {
+      newDiscountsList[existingId] = discountData;
+    } else {
+      newDiscountsList.push(discountData);
+    }
+    setDiscountsList(newDiscountsList);
+  };
+
+  const deleteDiscount = (id: string) => {
+    const listId = discountsList.findIndex((discount) => discount.id === id);
+    if (listId !== -1) {
+      const newDiscountsList = [...discountsList];
+      newDiscountsList.splice(listId, 1);
+      setDiscountsList(newDiscountsList);
+    }
+  };
+
   return (
     <Routes>
       <Route
@@ -19,7 +40,7 @@ const App = () => {
         path={AppUrl.Discounts}
         element={<DiscountsPage discountsList={discountsList} />}
       />
-      <Route path={AppUrl.Form} element={<FormPage />} />
+      <Route path={AppUrl.Form} element={<FormPage addDiscount={addDiscount} />} />
       <Route path={AppUrl.NotFound} element={<NotFoundPage />} />
       <Route path="/*" element={<Navigate replace to={AppUrl.NotFound} />} />
     </Routes>

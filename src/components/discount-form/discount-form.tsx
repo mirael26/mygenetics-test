@@ -1,29 +1,53 @@
 import { useState } from "react";
-import { ConditionFields } from "../../consts";
-import { IChangeFormDataParams } from "../../types";
+import { useNavigate } from "react-router-dom";
+import { AppUrl, ConditionFields } from "../../consts";
+import { IChangeFormDataParams, IDiscountInfo } from "../../types";
 import { clearEmptyFields, isEmptyCondition, validateForm } from "../../utils";
 import DiscountAmount from "../discount-amount/discount-amount";
 import DiscountConditions from "../discount-conditions/discount-conditions";
 import TextInput from "../mixins/text-input/text-input";
 import Textarea from "../mixins/textarea/textarea";
 
-const DiscountForm = () => {
+interface IDiscountFormProps {
+  addDiscount: (info: IDiscountInfo) => void;
+}
+
+const DiscountForm = ({addDiscount}: IDiscountFormProps) => {
+  const navigate = useNavigate();
+
   const [conditionsCount, setConditionsCount] = useState(1);
   const [formData, setFormData] = useState<{ [key: string]: string | object }>(
     {}
   );
   const [errors, setErrors] = useState<Array<string>>([]);
 
-  const handleFormSubmit = async (evt: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
 
     const formattedData = clearEmptyFields(formData);
-    console.log(formattedData);
+    formattedData['id'] = (Date.now()).toString();
     const errors = validateForm(formattedData);
 
     if (errors.length) {
       setErrors(errors);
+    } else {
+      fetchFormData(formattedData)
+        .then(() => {
+          addDiscount(formattedData as IDiscountInfo);
+          alert("Скидка успешно добавлена!");
+          navigate(AppUrl.Discounts);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
+  };
+
+  const fetchFormData = (formData: { [key: string]: string | object }) => {
+    return fetch("http://localhost:3000/", {
+      method: "POST",
+      body: JSON.stringify(formData),
+    });
   };
 
   const changeFormData = ({ name, value, group }: IChangeFormDataParams) => {

@@ -3,7 +3,11 @@ export type valueof<T> = T[keyof T];
 import { DiscountType } from './consts';
 
 export interface IDiscountInfo {
-
+  'discount-amount': string,
+  'discount-type': string,
+  'id': string;
+  name: string,
+  [key: string]: string | object,
 };
 
 export type TDiscountType = valueof<typeof DiscountType>;
